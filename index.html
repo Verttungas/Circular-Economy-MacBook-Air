@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circular Economy Influencer for a Day — The MacBook Air M5</title>
+<meta name="description" content="A student teardown of the MacBook Air M5 through circular economy thinking: materials, lifecycle impacts, redesign principles and two circular business models.">
+<meta name="author" content="Ortiz Pérez Vertti">
+
+<!-- Social preview (optional: add img/og-cover.jpg, 1200x630) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Circular Economy Influencer for a Day — The MacBook Air M5">
+<meta property="og:description" content="What happens to the laptop I use every day, and how circular design could change it.">
+<meta property="og:image" content="img/og-cover.jpg">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+<a class="skip-link" href="#profile">Skip to the article</a>
+
+<div class="reading-rail" aria-hidden="true"><span id="readingBar"></span></div>
+
+<nav class="navbar navbar-expand-lg site-nav" aria-label="Section navigation">
+  <div class="container">
+    <a class="navbar-brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="52 17" stroke-linecap="round"/>
+        <path d="M20.5 6.6 26 9.2l-2.7 5.3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span>Loop / Notebook</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Open menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navLinks">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#profile">Product</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lifecycle">Lifecycle</a></li>
+        <li class="nav-item"><a class="nav-link" href="#materials">Materials</a></li>
+        <li class="nav-item"><a class="nav-link" href="#impact">Impact</a></li>
+        <li class="nav-item"><a class="nav-link" href="#redesign">Redesign</a></li>
+        <li class="nav-item"><a class="nav-link" href="#business">Business</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ───────────────────────────── HERO ───────────────────────────── -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-6">
+        <p class="hero-kicker">Circular economy · Student blog</p>
+        <h1 class="hero-title">The laptop I touch<br>more than my phone</h1>
+        <p class="hero-lede">
+          I spent a week looking at my MacBook Air M5 the way a materials engineer would:
+          what it's made of, where the damage really happens, and what would have to change
+          for it to stop being a four-year product.
+        </p>
+        <p class="hero-byline">
+          Ortiz Pérez Vertti · 9 min read · Sources: Apple Product Environmental Report, Ellen MacArthur Foundation
+        </p>
+        <a class="btn-loop" href="#profile">Start the teardown</a>
+      </div>
+
+      <div class="col-lg-6">
+        <svg class="hero-art" viewBox="0 0 480 380" role="img" aria-label="Line drawing of an open laptop wrapped by a circular material flow">
+          <defs>
+            <marker id="heroArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="var(--cobalt-lite)"/>
+            </marker>
+          </defs>
+
+          <!-- orbit -->
+          <g class="hero-orbit">
+            <circle cx="240" cy="196" r="150" fill="none" stroke="var(--alu-line)" stroke-width="1"/>
+            <path class="hero-orbit-path" d="M240 46 a150 150 0 1 1 -1 0" fill="none"
+                  stroke="var(--cobalt-lite)" stroke-width="2.5" stroke-linecap="round" marker-end="url(#heroArrow)"/>
+            <circle class="hero-dot" cx="240" cy="46" r="5" fill="var(--amber)"/>
+          </g>
+
+          <!-- laptop -->
+          <g class="hero-laptop" fill="none" stroke="var(--alu-strong)" stroke-width="2.2" stroke-linejoin="round">
+            <path d="M148 130 h184 a6 6 0 0 1 6 6 v104 h-196 v-104 a6 6 0 0 1 6 -6 z"/>
+            <path d="M162 144 h156 v82 h-156 z" stroke="var(--alu-line)" stroke-width="1.4"/>
+            <path d="M118 240 h244 l16 24 h-276 z"/>
+            <path d="M212 250 h56" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <!-- flow labels -->
+          <g class="hero-node" font-size="13">
+            <text x="240" y="26" text-anchor="middle">materials</text>
+            <text x="418" y="200" text-anchor="middle">use</text>
+            <text x="240" y="372" text-anchor="middle">recovery</text>
+            <text x="62" y="200" text-anchor="middle">making</text>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────────────────────────── PROFILE ─────────────────────────── -->
+<section class="band" id="profile">
+  <div class="container">
+    <h2 class="band-title">Product profile</h2>
+
+    <div class="row g-4 g-lg-5 align-items-start">
+      <div class="col-lg-7">
+        <p class="lead-serif">
+          The MacBook Air M5 is a thin aluminium laptop built around Apple's M5 chip. I use it for coding,
+          for my university practices, for streaming, and for my work as Head of Tech at a startup. It is
+          the device I open first in the morning and close last at night.
+        </p>
+        <p>
+          It also belongs to a category of products that start to feel disposable after a couple of years —
+          not because they break, but because the OS stops updating or a newer model appears. A lot of
+          working laptops end up in a drawer when they could easily get a second life running Linux.
+        </p>
+        <p>
+          What surprised me while researching this is that Apple publishes a Product Environmental Report for
+          every device, so most of the numbers on this page are not guesses — they come from that document
+          (Apple Inc., 2020).
+        </p>
+      </div>
+
+      <div class="col-lg-5">
+        <figure class="figure-slot" data-label="img/macbook-hero.webp">
+          <img src="img/macbook-hero.webp" alt="An open aluminium laptop on a desk" loading="lazy" data-fallback>
+          <figcaption>The object of study: one laptop, roughly 1.24&nbsp;kg of mixed materials.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <ul class="stat-strip">
+      <li><span class="stat-num">47%</span><span class="stat-lab">of lifetime emissions come from production</span></li>
+      <li><span class="stat-num">3–5</span><span class="stat-lab">years with the average first owner</span></li>
+      <li><span class="stat-num">6</span><span class="stat-lab">material families packed into one shell</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ────────────────────────── LIFECYCLE ────────────────────────── -->
+<section class="band band-dark" id="lifecycle">
+  <div class="container">
+    <h2 class="band-title">How the laptop moves through the economy</h2>
+    <p class="band-intro">
+      Right now the path is a straight line that ends in a bin. Flip the switch to see the same five stages
+      with the return routes a circular design would add.
+    </p>
+
+    <div class="mode-switch" role="group" aria-label="Diagram mode">
+      <button type="button" class="mode-btn is-on" data-mode="linear" aria-pressed="true">Linear today</button>
+      <button type="button" class="mode-btn" data-mode="circular" aria-pressed="false">Circular redesign</button>
+    </div>
+
+    <div class="diagram" id="flowDiagram" data-mode="linear">
+      <svg viewBox="0 0 960 348" role="img" aria-label="Lifecycle diagram of a laptop from raw materials to disposal, with circular return loops">
+        <defs>
+          <marker id="fwd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--alu-strong)"/>
+          </marker>
+          <marker id="back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--cobalt-lite)"/>
+          </marker>
+          <marker id="loss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--amber)"/>
+          </marker>
+        </defs>
+
+        <!-- stage boxes -->
+        <g class="stage">
+          <rect x="20" y="44" width="160" height="86" rx="10"/>
+          <text x="100" y="78">Raw materials</text>
+          <text class="stage-sub" x="100" y="100">aluminium, lithium,</text>
+          <text class="stage-sub" x="100" y="116">cobalt, rare earths</text>
+        </g>
+        <g class="stage">
+          <rect x="212" y="44" width="160" height="86" rx="10"/>
+          <text x="292" y="78">Manufacturing</text>
+          <text class="stage-sub" x="292" y="100">assembly, mostly</text>
+          <text class="stage-sub" x="292" y="116">in Asia</text>
+        </g>
+        <g class="stage">
+          <rect x="404" y="44" width="160" height="86" rx="10"/>
+          <text x="484" y="78">Distribution</text>
+          <text class="stage-sub" x="484" y="100">shipped worldwide</text>
+          <text class="stage-sub" x="484" y="116">by air and sea</text>
+        </g>
+        <g class="stage">
+          <rect x="596" y="44" width="160" height="86" rx="10"/>
+          <text x="676" y="78">Use</text>
+          <text class="stage-sub" x="676" y="100">3 to 5 years</text>
+          <text class="stage-sub" x="676" y="116">per owner</text>
+        </g>
+        <g class="stage stage-end">
+          <rect x="788" y="44" width="152" height="86" rx="10"/>
+          <text x="864" y="78">End of life</text>
+          <text class="stage-sub" x="864" y="100">landfill, informal</text>
+          <text class="stage-sub" x="864" y="116">recycling, take-back</text>
+        </g>
+
+        <!-- forward arrows -->
+        <g class="flow-fwd" marker-end="url(#fwd)">
+          <path d="M182 87 h24"/>
+          <path d="M374 87 h24"/>
+          <path d="M566 87 h24"/>
+          <path d="M758 87 h24"/>
+        </g>
+
+        <!-- linear leakage -->
+        <g class="leak">
+          <path d="M864 132 v40" marker-end="url(#loss)"/>
+          <text x="864" y="198">materials leave the economy</text>
+          <text class="leak-sub" x="864" y="220">low recovery: mixed, glued, soldered</text>
+        </g>
+
+        <!-- circular return loops -->
+        <g class="loops">
+          <path d="M676 138 C 676 206, 484 206, 484 142" marker-end="url(#back)"/>
+          <path d="M700 138 C 720 262, 292 264, 292 142" marker-end="url(#back)"/>
+          <path d="M864 138 C 906 320, 96 326, 100 142" marker-end="url(#back)"/>
+          <text x="580" y="178">Reuse &amp; resell</text>
+          <text x="472" y="218">Repair &amp; refurbish</text>
+          <text x="330" y="252">Recycle materials</text>
+        </g>
+      </svg>
+    </div>
+
+    <p class="diagram-note" id="diagramNote">
+      In the linear version every arrow points one way. Once the device stops being wanted, the aluminium,
+      gold and cobalt inside it stop being available to anyone.
+    </p>
+  </div>
+</section>
+
+<!-- ────────────────────────── MATERIALS ────────────────────────── -->
+<section class="band" id="materials">
+  <div class="container">
+    <h2 class="band-title">What is actually inside</h2>
+    <p class="band-intro">
+      Almost everything in this laptop <em>could</em> be recycled. In practice recovery rates stay low, because
+      the materials are bonded together and separating them needs machinery most recyclers don't have.
+      Filter by property to see the pattern.
+    </p>
+
+    <div class="chip-row" role="group" aria-label="Filter materials">
+      <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">All materials</button>
+      <button type="button" class="chip" data-filter="recyclable" aria-pressed="false">Recyclable in practice</button>
+      <button type="button" class="chip" data-filter="hard" aria-pressed="false">Hard to recover</button>
+      <button type="button" class="chip" data-filter="toxic" aria-pressed="false">Toxic risk</button>
+    </div>
+
+    <div class="row g-3 g-md-4" id="materialGrid">
+
+      <div class="col-md-6 col-lg-4 mat" data-tags="recyclable">
+        <article class="mat-card">
+          <h3>Aluminium enclosure</h3>
+          <p>The best-behaved material here. Apple states the 13-inch MacBook Air enclosure is made with recycled aluminium (Apple Inc., 2020).</p>
+          <span class="tag tag-good">Recyclable</span>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mat" data-tags="recyclable toxic">
+        <article class="mat-card">
+          <h3>Lithium battery</h3>
+          <p>Recyclable but complicated. Handled badly it becomes a fire risk and a source of contamination.</p>
+          <span class="tag tag-good">Recyclable</span><span class="tag tag-warn">Toxic risk</span>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mat" data-tags="recyclable hard">
+        <article class="mat-card">
+          <h3>Circuit boards</h3>
+          <p>Gold, copper and other metals sit here. The recycling process exists but is expensive and not available everywhere.</p>
+          <span class="tag tag-good">Recyclable</span><span class="tag tag-hard">Hard to recover</span>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mat" data-tags="recyclable">
+        <article class="mat-card">
+          <h3>Glass display</h3>
+          <p>Apple states the LCD is mercury free and the display glass is arsenic free (Apple Inc., 2020).</p>
+          <span class="tag tag-good">Recyclable</span>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mat" data-tags="hard">
+        <article class="mat-card mat-card-flag">
+          <h3>Rare earth elements</h3>
+          <p>In the magnets and speakers. Technically recyclable, but very hard to recover with today's technology. This is the biggest open problem.</p>
+          <span class="tag tag-hard">Hard to recover</span>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mat" data-tags="recyclable hard">
+        <article class="mat-card">
+          <h3>Internal plastics</h3>
+          <p>Recyclable in theory, but rarely separated at end of life, so most of it is simply lost.</p>
+          <span class="tag tag-hard">Hard to recover</span>
+        </article>
+      </div>
+
+    </div>
+
+    <p class="empty-state" id="materialEmpty" hidden>No materials match that filter.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── IMPACT ──────────────────────────── -->
+<section class="band band-tint" id="impact">
+  <div class="container">
+    <h2 class="band-title">Where the damage happens</h2>
+
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-7">
+        <p class="lead-serif">
+          The biggest environmental impact of this laptop is not you leaving it plugged in overnight.
+          It is the day it was built.
+        </p>
+
+        <div class="split" data-fill>
+          <div class="split-bar">
+            <span class="seg seg-a" style="--w:47" title="Production 47%"></span>
+            <span class="seg seg-b" style="--w:43" title="Use 43%"></span>
+            <span class="seg seg-c" style="--w:9" title="Transport 9%"></span>
+          </div>
+          <ul class="split-key">
+            <li><i class="key key-a"></i>Production <b>47%</b></li>
+            <li><i class="key key-b"></i>Use <b>43%</b></li>
+            <li><i class="key key-c"></i>Transport <b>9%</b></li>
+          </ul>
+          <p class="split-src">Share of total greenhouse gas emissions of a MacBook Air (Apple Inc., 2020).</p>
+        </div>
+
+        <p>
+          That split changes what "being sustainable" means. The most useful thing a person can do is not to
+          dim the screen — it is to keep the laptop for two more years before buying the next one.
+        </p>
+
+        <div class="callout">
+          <h3>The social side</h3>
+          <p>
+            Cobalt and rare earths come from mining operations that in some regions have been linked to poor
+            labour conditions. Apple has been working on responsible sourcing, but it remains an industry-wide
+            problem (Apple Inc., 2020).
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <figure class="figure-slot figure-tall" data-label="img/manufacturing.jpg">
+          <img src="img/manufacturing.jpg" alt="Electronics assembly line" loading="lazy" data-fallback>
+          <figcaption>Manufacturing: 47% of the footprint, and the stage a user never sees.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────── REDESIGN ─────────────────────────── -->
+<section class="band" id="redesign">
+  <div class="container">
+    <h2 class="band-title">Redesigning it with the three CE principles</h2>
+    <p class="band-intro">
+      The goal is not to invent a different laptop. It is to change how this one is designed, used and recovered.
+    </p>
+
+    <div class="principle">
+      <div class="principle-head">
+        <span class="principle-index">Principle 1</span>
+        <h3>Eliminate waste and pollution</h3>
+      </div>
+      <div class="principle-body">
+        <p>
+          Most of the waste starts as a design decision. The battery is glued to the case and the RAM is
+          soldered to the board, so one failing part usually condemns the whole assembly. A redesign would:
+        </p>
+        <ul class="tick-list">
+          <li>Use modular components — removable battery, upgradeable RAM and storage</li>
+          <li>Replace glue and adhesives with screws or clips</li>
+          <li>Standardise screws and connectors across generations so one repair kit covers many models</li>
+        </ul>
+        <p class="principle-punch">A small failure would stop meaning a whole new device.</p>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="principle-head">
+        <span class="principle-index">Principle 2</span>
+        <h3>Circulate products and materials</h3>
+      </div>
+      <div class="principle-body">
+        <p>This is where reuse, repair, refurbishment and recycling actually live:</p>
+        <ul class="tick-list">
+          <li>A take-back programme that collects and refurbishes units for resale — Apple Trade In exists, but it could go much further</li>
+          <li>A repair network of certified independent shops, not only Apple stores</li>
+          <li>A design where aluminium, glass and metals separate cleanly at end of life</li>
+        </ul>
+        <figure class="figure-slot figure-wide" data-label="img/repair.jpg">
+          <img src="img/repair.jpg" alt="A laptop being repaired with tools on a workbench" loading="lazy" data-fallback>
+          <figcaption>Repairability is a design choice long before it is a service.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="principle">
+      <div class="principle-head">
+        <span class="principle-index">Principle 3</span>
+        <h3>Regenerate nature</h3>
+      </div>
+      <div class="principle-body">
+        <p>Harder here, because a laptop is not a biological product. There are still routes:</p>
+        <ul class="tick-list">
+          <li>Bio-based plastics for small internal parts that don't need extreme durability</li>
+          <li>More aluminium and cobalt from recycled sources instead of virgin mining, easing pressure on mining ecosystems</li>
+          <li>Packaging made from recycled or compostable fibre instead of plastic wrap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────── BUTTERFLY ────────────────────────── -->
+<section class="band band-dark" id="butterfly">
+  <div class="container">
+    <h2 class="band-title">Reading the butterfly diagram</h2>
+    <p class="band-intro">
+      The Ellen MacArthur Foundation describes a system where technical materials such as metals and plastics
+      stay in circulation through reuse, repair, remanufacture and recycling, while biological materials return
+      safely to the earth (Ellen MacArthur Foundation, 2021). Drawing my laptop onto it made one thing obvious:
+      almost all of it belongs on the technical wing. You don't compost a MacBook.
+    </p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 960 540" role="img" aria-label="Butterfly diagram showing the technical cycle loops of a laptop and a small biological cycle">
+        <defs>
+          <marker id="bfArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--cobalt-lite)"/>
+          </marker>
+          <marker id="bioArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--moss)"/>
+          </marker>
+        </defs>
+
+        <!-- wing labels -->
+        <text class="wing-label wing-bio" x="150" y="40">Biological cycle — marginal here</text>
+        <text class="wing-label wing-tech" x="810" y="40">Technical cycle — where a laptop lives</text>
+
+        <!-- spine -->
+        <line class="spine" x1="480" y1="70" x2="480" y2="500"/>
+        <g class="spine-node">
+          <circle cx="480" cy="90" r="8"/><text x="480" y="66">Materials</text>
+          <circle cx="480" cy="200" r="8"/><text x="480" y="176">Parts manufacturer</text>
+          <circle cx="480" cy="310" r="8"/><text x="480" y="286">Product assembly</text>
+          <circle cx="480" cy="420" r="8"/><text x="480" y="396">User</text>
+        </g>
+        <g class="spine-end">
+          <rect x="410" y="482" width="140" height="34" rx="8"/>
+          <text x="480" y="504">Minimise leakage</text>
+        </g>
+
+        <!-- technical loops (right) -->
+        <g class="tech-loop" marker-end="url(#bfArrow)">
+          <path d="M488 430 C 590 470, 596 380, 490 372"/>
+          <path d="M488 434 C 680 486, 690 300, 490 302"/>
+          <path d="M488 438 C 780 500, 800 180, 490 192"/>
+          <path d="M488 442 C 890 520, 910 60, 490 82"/>
+        </g>
+        <g class="loop-label">
+          <text x="596" y="398">Share &amp; maintain</text>
+          <text x="700" y="352">Reuse &amp; redistribute</text>
+          <text x="794" y="288">Refurbish &amp; remanufacture</text>
+          <text x="862" y="196">Recycle</text>
+        </g>
+
+        <!-- biological loops (left) -->
+        <g class="bio-loop" marker-end="url(#bioArrow)">
+          <path d="M472 430 C 360 476, 348 344, 470 336"/>
+          <path d="M472 434 C 250 486, 236 214, 470 206"/>
+        </g>
+        <g class="loop-label loop-label-bio">
+          <text x="348" y="392">Compostable packaging</text>
+          <text x="238" y="286">Bio-based internal plastics</text>
+        </g>
+      </svg>
+    </div>
+
+    <p class="diagram-note">
+      The four loops on the right are ordered by how much value they keep. Sharing and maintaining preserve the
+      most; recycling is the last resort, not the goal.
+    </p>
+  </div>
+</section>
+
+<!-- ────────────────────────── BUSINESS ─────────────────────────── -->
+<section class="band" id="business">
+  <div class="container">
+    <h2 class="band-title">A business model that pays for all this</h2>
+    <p class="band-intro">
+      For the redesigned MacBook Air, two circular models fit together rather than compete.
+    </p>
+
+    <ul class="nav nav-pills model-tabs" id="modelTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab-ple" data-bs-toggle="pill" data-bs-target="#pane-ple" type="button" role="tab" aria-controls="pane-ple" aria-selected="true">Product life extension</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-paas" data-bs-toggle="pill" data-bs-target="#pane-paas" type="button" role="tab" aria-controls="pane-paas" aria-selected="false">Product as a service</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-mix" data-bs-toggle="pill" data-bs-target="#pane-mix" type="button" role="tab" aria-controls="pane-mix" aria-selected="false">Both together</button>
+      </li>
+    </ul>
+
+    <div class="tab-content model-panes">
+      <div class="tab-pane fade show active" id="pane-ple" role="tabpanel" aria-labelledby="tab-ple" tabindex="0">
+        <p>
+          The biggest opportunity is simply keeping the laptop working. Apple could expand programmes like
+          Apple Renew with discounted repairs, battery replacements and certified refurbished units at a
+          lower price point.
+        </p>
+        <p>
+          That opens a market of buyers who can't afford a new MacBook but would happily buy a good
+          refurbished one — and it cuts demand for new raw materials at the same time.
+        </p>
+      </div>
+
+      <div class="tab-pane fade" id="pane-paas" role="tabpanel" aria-labelledby="tab-paas" tabindex="0">
+        <p>
+          A subscription aimed at students and businesses. Instead of buying, you pay monthly and Apple keeps
+          ownership of the device, handling upgrades, repairs and eventually take-back for refurbishment or
+          recycling.
+        </p>
+        <p class="principle-punch">
+          This flips the incentive: the manufacturer now benefits from a laptop that lasts, because they are
+          the ones holding it at end of life — not the customer.
+        </p>
+      </div>
+
+      <div class="tab-pane fade" id="pane-mix" role="tabpanel" aria-labelledby="tab-mix" tabindex="0">
+        <p>
+          Apple could keep selling units the traditional way, but with a real life-extension and take-back
+          programme running underneath, plus a subscription tier for people who don't want to own the device
+          long term.
+        </p>
+        <p>
+          Value for the company: recurring revenue and a stronger relationship with the customer.
+          Value for the planet: less material pulled out of the ground every year.
+        </p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <h3 class="compare-title">What changes when the model changes</h3>
+      <div class="table-responsive">
+        <table class="table compare-table align-middle">
+          <thead>
+            <tr><th scope="col">&nbsp;</th><th scope="col">Selling units</th><th scope="col">Circular model</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Revenue comes from</th><td>New devices sold</td><td>Repairs, refurbished units, subscriptions</td></tr>
+            <tr><th scope="row">A long-lasting laptop is</th><td>A lost sale</td><td>A cheaper asset to keep serving</td></tr>
+            <tr><th scope="row">Who owns end of life</th><td>The customer</td><td>The manufacturer</td></tr>
+            <tr><th scope="row">Design pressure</th><td>Thinner, sealed, glued</td><td>Modular, openable, standardised</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────── CONCLUSION ────────────────────────── -->
+<section class="band band-close" id="conclusion">
+  <div class="container">
+    <h2 class="band-title">So what do we actually do</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="close-card">
+          <h3>As consumers</h3>
+          <p>Hold on to devices longer and choose repair over replacement. Given that 47% of the footprint is already spent before the laptop reaches you, the extra year you keep it is the cheapest climate action available.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="close-card">
+          <h3>As companies</h3>
+          <p>Design for disassembly and run take-back programmes that are operations, not marketing. Refurbishment and subscription models create real business that doesn't depend on constant new production.</p>
+        </div>
+      </div>
+    </div>
+    <p class="close-line">
+      Extending the life of one laptop avoids the emissions of building another one. That is the whole argument.
+    </p>
+  </div>
+</section>
+
+<!-- ───────────────────────── REFERENCES ────────────────────────── -->
+<section class="band band-refs" id="references">
+  <div class="container">
+    <h2 class="band-title">References</h2>
+    <ol class="ref-list">
+      <li>
+        Apple Inc. (2020). <i>Product environmental report: 13-inch MacBook Air.</i> Apple.
+        <a href="https://www.apple.com/environment/pdf/products/notebooks/13-inch_MacBookAir_PER_Nov2020.pdf" rel="noopener">apple.com</a>
+      </li>
+      <li>
+        Ellen MacArthur Foundation. (2021, February 12). <i>The butterfly diagram: Visualising the circular economy.</i>
+        <a href="https://www.ellenmacarthurfoundation.org/circular-economy-diagram" rel="noopener">ellenmacarthurfoundation.org</a>
+      </li>
+      <li>
+        Geissdoerfer, M., Savaget, P., Bocken, N. M. P., &amp; Hultink, E. J. (2017). The circular economy:
+        A new sustainability paradigm? <i>Journal of Cleaner Production, 143,</i> 757–768.
+        <a href="https://doi.org/10.1016/j.jclepro.2016.12.048" rel="noopener">doi.org</a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <p>Written by Ortiz Pérez Vertti for a circular economy course. Diagrams drawn for this post.</p>
+    <p class="foot-small">Photographs are illustrative and not affiliated with Apple Inc.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
